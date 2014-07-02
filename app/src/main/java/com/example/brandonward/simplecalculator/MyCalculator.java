@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
 
 
 public class MyCalculator extends Activity {
@@ -32,5 +34,12 @@ public class MyCalculator extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onButtonClick(View v){
+        Button button = (Button) v;
+        button.setText("I've Been Clicked!");
+        TextView myText = (TextView) findViewById(R.id.textView);
+        myText.setText("You Clicked Me!");
     }
 }
