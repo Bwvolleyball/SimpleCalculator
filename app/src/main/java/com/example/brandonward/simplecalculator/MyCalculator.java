@@ -10,6 +10,8 @@ import android.widget.*;
 
 public class MyCalculator extends Activity {
 
+    String display = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +40,8 @@ public class MyCalculator extends Activity {
 
     public void onButtonClick(View v){
         Button button = (Button) v;
-        button.setText("I've Been Clicked!");
-        TextView myText = (TextView) findViewById(R.id.textView);
-        myText.setText("You Clicked Me!");
+        display += (String) button.getText();
+        TextView myText = (TextView) findViewById(R.id.calcDisplay);
+        myText.setText(display);
     }
 }
