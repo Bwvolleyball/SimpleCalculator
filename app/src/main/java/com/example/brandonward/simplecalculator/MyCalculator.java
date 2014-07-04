@@ -15,6 +15,8 @@ import com.revmob.ads.banner.RevMobBanner;
 
 public class MyCalculator extends Activity implements IMyCalculator {
     private RevMob revmob;
+    private RevMobBanner myBanner;
+    private String revMobAppId = "53b5e88de55519520b88ca31";
     private String display = "";
 
     private RevMobAdsListener listener = new RevMobAdsListener() {
@@ -66,12 +68,12 @@ public class MyCalculator extends Activity implements IMyCalculator {
         setContentView(R.layout.activity_my_calculator);
 
         // Starting RevMob session
-        revmob = RevMob.start(this); //RevMob Media ID configured in the AndroidManifest.xml file
+        revmob = RevMob.startWithListenerForWrapper(this,revMobAppId, listener); //RevMob Media ID configured in the AndroidManifest.xml file
         revmob.setTestingMode(RevMobTestingMode.WITH_ADS); // with this line, RevMob will always deliver a sample ad
         RevMobBanner banner = revmob.createBanner(this, listener);
         ViewGroup view = (ViewGroup) findViewById(R.id.banner);
         view.addView(banner);
-        revmob.showBanner(this);
+        //revmob.showBanner(this);
     }
 
     @Override
